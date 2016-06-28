@@ -66,4 +66,19 @@ class TodoTest < MiniTest::Test
     @todo.mark_todo
     assert_equal("finish homework,yes\n", @todo.todos[0].to_s, "The first todo in todos was not 'finish homework'")
   end
+
+  def test_edit_todo_number_prints_prompt
+    todo_setup # Given
+    @todo.edit_todo_number
+    assert_equal("Which todo would you like to edit?", $output.last, "The last message was not asking what todo they would like to edit")
+  end
+
+  def test_edit_todo_prints_prompt
+    todo_setup # Given
+    @todo.edit_todo
+    assert_equal("Please enter the new # todo: ", $output.last, "The last message was not asking for the new edited todo")
+  end
+
+  def test_edit_todo_changes_todo
+  end
 end
